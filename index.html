@@ -25,9 +25,24 @@
             <article id="big-introduction">
                 <h3>Array Introduction</h3>
                 <p>Arrays are ordered collections of values that can hold multiple items of any type in a single variable.</p>
-                <pre><code>// Creating arrays
+                <pre><code>// Create Arrays and Access Array Elements
 let fruits = ['Apple', 'Banana', 'Orange'];
-let mixedData = [1, 'Hello', true, {name: 'John'}];</code></pre>
+let mixedData = [1, 'Hello', true, {name: 'John'}, ['Apple', 'Banana', 'Orange']];
+
+console.log(fruits[0]);
+console.log(fruits[2]);
+console.log(fruits[1][3]);
+console.log(fruits[2][0]);
+
+console.log(mixedData[4][0][1]);
+
+console.log(fruits);
+fruits[2] = 'Pomegranate';
+console.log(fruits);
+
+console.log(mixedData)
+mixedData[4] = 'Watermelon';
+console.log(mixedData);</code></pre>
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250210122951179871/JavaScript-Array.webp" alt="Array structure visualization">
                 <p>Arrays are zero-indexed: the first element is at position 0.</p>
             </article>
@@ -35,12 +50,26 @@ let mixedData = [1, 'Hello', true, {name: 'John'}];</code></pre>
             <article id="using-length">
                 <h3>Using Length With Array</h3>
                 <p>The <code>length</code> property returns the number of elements in an array.</p>
-                <pre><code>let colors = ['Red', 'Green', 'Blue'];
-console.log(colors.length); // 3
+                <pre><code>let fruits = ['Apple', 'Banana', 'Orange'];
+console.log(fruits.length);
 
-// Changing length
-colors.length = 2;
-console.log(colors); // ['Red', 'Green']</code></pre>
+fruits[6] = 'Strawberries'; // Add element at the index 6 of the array
+console.log(fruits);
+console.log(fruits.length); 
+
+fruits[fruits.length] = 'Strawberries'; // Add element after the last index of the array
+console.log(fruits);
+console.log(fruits.length); 
+
+fruits[fruits.length-1] = 'Pineapple'; // Add element at the last index of the array
+console.log(fruits);
+console.log(fruits.length); 
+
+fruits.length = 2;
+console.log(fruits);
+
+studentsNames.length = 0; // Remove all elements from the array
+console.log(fruits);</code></pre>
                 <img src="https://tecadmin.net/wp-content/uploads/2023/02/javascript-array-blocks.png" alt="Array length visualization">
             </article>
         </section>
@@ -51,19 +80,31 @@ console.log(colors); // ['Red', 'Green']</code></pre>
             <article id="add-remove">
                 <h3>Add And Remove From Array</h3>
                 <p>Common methods for modifying arrays:</p>
-                <pre><code>let numbers = [1, 2, 3];
+                <pre><code>let studentsNames = ["Amr", "Ahmed", "Beshoy", "Adham", "Khaled", "Shehab"];
 
-// Add to end
-numbers.push(4); // [1, 2, 3, 4]
+console.log(studentsNames);
+studentsNames.unshift("Ali"); // Add element at the beginning of the array
+console.log(studentsNames);
 
-// Remove from end
-numbers.pop(); // [1, 2, 3]
+studentsNames.push("Mohamed"); // Add element at the end of the array
+console.log(studentsNames);
 
-// Add to start
-numbers.unshift(0); // [0, 1, 2, 3]
+studentsNames.push("Amr", "Ahmed", "Beshoy"); // Add multiple elements at the end of the array
+console.log(studentsNames);
 
-// Remove from start
-numbers.shift(); // [1, 2, 3]</code></pre>
+studentsNames.shift(); // Remove the first element from the array
+console.log(studentsNames);
+
+studentsNames.pop(); // Remove the last element from the array
+console.log(studentsNames);
+
+let removeFirst = studentsNames.shift();
+console.log(studentsNames);
+console.log(`The first removed name is: ${removeFirst}`);
+
+let removeLast = studentsNames.pop();
+console.log(studentsNames);
+console.log(`The last removed name is: ${removeLast}`);</code></pre>
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240104154843/js-array.png" alt="Array add methods visualization" style="display: inline; width: 550px;">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240909132345/Remove-Array-Elements.png" alt="Array remove methods visualization" style="display: inline; width: 550px;">
             </article>
@@ -71,17 +112,19 @@ numbers.shift(); // [1, 2, 3]</code></pre>
             <article id="searching">
                 <h3>Searching Array</h3>
                 <p>Methods to find elements in arrays:</p>
-                <pre><code>let languages = ['JavaScript', 'Python', 'Java', 'C++'];
+                <pre><code>let students = ["Amr", "Ahmed", "Beshoy", "Adham", "Khaled", "Shehab", "Ali", "Mohamed"];
 
-// indexOf - finds first occurrence
-console.log(languages.indexOf('Java')); // 2
+// indexOf(Search Element, from Index [Optional])
+console.log(students.indexOf("Amr")); // Find the index of the element "Amr"
+console.log(students.indexOf("Ahmed", 2));
 
-// includes - checks existence
-console.log(languages.includes('Ruby')); // false
+// lastIndexOf(Search Element, from Index [Optional])
+console.log(students.lastIndexOf("Beshoy")); // Find the last index of the element "Beshoy"
+console.log(students.lastIndexOf("Adham", -2));
 
-// find - finds first match
-let result = languages.find(lang => lang.length > 5);
-console.log(result); // 'JavaScript'</code></pre>
+// includes(Value to find, from Index [Optional]) => [ES7]
+console.log(students.includes("Khaled")); // Check if the array includes the element "Khaled"
+console.log(students.includes("Shehab", 3));</code></pre>
                 <img src="https://www.javascripttutorial.net/wp-content/uploads/2024/11/JavaScript-Array-indexOf.svg" alt="Array search methods visualization" style="display: inline; width: 30%;">
                 <img src="https://www.javascripttutorial.net/wp-content/uploads/2024/11/JavaScript-Array-includes.svg" alt="Array search methods visualization" style="display: inline; width: 30%;">
                 <img src="https://www.javascripttutorial.net/wp-content/uploads/2024/11/JavaScript-Array-find.svg" alt="Array search methods visualization" style="display: inline; width: 30%;">
@@ -90,38 +133,55 @@ console.log(result); // 'JavaScript'</code></pre>
             <article id="sorting">
                 <h3>Sorting Array</h3>
                 <p>The <code>sort()</code> method sorts elements as strings by default.</p>
-                <pre><code>let fruits = ['Banana', 'Orange', 'Apple'];
-fruits.sort(); // ['Apple', 'Banana', 'Orange']
+                <pre><code>let mixedData = [1, 'Hello', true, {name: 'John'}, 5, 90, ['Apple', 'Banana', 'Orange'], -50, '10'];
 
-let numbers = [40, 100, 1, 5, 25];
-numbers.sort((a, b) => a - b); // [1, 5, 25, 40, 100]</code></pre>
+console.log(mixedData);
+console.log(mixedData.sort());
+console.log(mixedData.reverse());
+console.log(mixedData.sort().reverse());</code></pre>
                 <img src="https://miro.medium.com/v2/resize:fit:808/1*rdSYNgtt6Z_wF8eBLvPrZQ.png" alt="Array sorting visualization">
             </article>
 
             <article id="slicing">
                 <h3>Slicing Array</h3>
                 <p><code>slice()</code> extracts a portion of an array without modifying the original.</p>
-                <pre><code>let colors = ['Red', 'Green', 'Blue', 'Yellow', 'Purple'];
+                <pre><code>let numbers = ['Apple', 'Banana', 'Orange', 'Strawberries', 'Pineapple', 'Pomegranate', 'Watermelon'];
+console.log(numbers);
 
-// Extract elements from index 1 to 3 (not including 3)
-let subset = colors.slice(1, 3); // ['Green', 'Blue']
+// slice(Start [Optional], End [Optional] Not including End)
+console.log(numbers.slice());
+console.log(numbers.slice(1)); // Get the last elements
+console.log(numbers.slice(0, 3)); // Get the first 3 elements
+console.log(numbers.slice(-3));
+console.log(numbers.slice(1, -2));
+console.log(numbers.slice(-4, -2));
+console.log(numbers);
 
-// Copy entire array
-let copy = colors.slice();</code></pre>
+// splice(Start [Mandatory], Delete Count [Optional] [0 no remove], The item to Add [Optional])
+console.log(numbers.splice(2));
+console.log(numbers.splice(2, 2));
+console.log(numbers.splice(2, 2, 'Grapes', 'Mango'));
+console.log(numbers);</code></pre>
                 <img src="https://www.javascripttutorial.net/wp-content/uploads/2016/11/JavaScript-Array-Slice-300x172.png" alt="Array slicing visualization">
             </article>
 
             <article id="joining">
                 <h3>Joining Arrays</h3>
                 <p>Combine arrays or convert them to strings:</p>
-                <pre><code>let arr1 = [1, 2, 3];
-let arr2 = [4, 5, 6];
+                <pre><code>let friends = ["Ahmed", "Sayed", "Ali", "Osama", "Gamal"];
+let newFriends = ["Samar", "Sarah"];
+let schoolFriends = ["Arwa", "Mohammed", "Shrouk"];
 
-// Concatenate arrays
-let combined = arr1.concat(arr2); // [1, 2, 3, 4, 5, 6]
+let allFriends = friends.concat(newFriends, schoolFriends);
+console.log(allFriends);
 
-// Join elements to string
-let str = arr1.join('-'); // "1-2-3"</code></pre>
+let allFriends0 = friends.concat(newFriends, schoolFriends, ["Shady", "Hady"]);
+console.log(allFriends0);
+
+console.log(allFriends.join());
+console.log(allFriends.join(""));
+console.log(allFriends.join(" @ "));
+console.log(allFriends.join("|"));</code></pre>
                 <img src="https://scaler.com/topics/images/array-join.webp" alt="Array joining visualization">
             </article>
         </section>
